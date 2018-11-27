@@ -56,19 +56,6 @@
     - { dest: "/root/.kube", mode: "0700", state: "directory" }
   tags: kubectl
 
-- name: touch files
-  copy:
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    content: ""
-    force: "no"
-  with_items:
-    - { dest: "/etc/bash_completion.d/kubectl.sh", mode: "0755" }
-    - { dest: "/root/.kube/config", mode: "0600" }
-  tags: kubectl
-
 - name: download archive
   get_url:
     url: "{{ kubectl_url }}"
@@ -78,6 +65,18 @@
     mode: "0755"
   tags: kubectl
 
+- name: touch files
+  copy:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    content: ""
+    force: "no"
+  with_items:
+    - { dest: "/root/.kube/config", mode: "0600" }
+  tags: kubectl
+
 - name: install kubectl bash completion
   shell: |
     kubectl completion bash > /etc/bash_completion.d/kubectl.sh
@@ -85,3 +84,17 @@
     creates: "/etc/bash_completion.d/kubectl.sh"
   register: bash_completion_result
   changed_when: bash_completion_result.rc != 0
+  tags: kubectl
+
+- name: prepare files
+  file:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    state: "{{ item.state | default('file') }}"
+  with_items:
+    - { dest: "/etc/bash_completion.d/kubectl.sh", mode: "0755" }
+    - { dest: "/root/.kube/config", mode: "0600" }
+    - { dest: "/usr/local/bin/kubectl", mode: "0755" }
+  tags: kubectl
