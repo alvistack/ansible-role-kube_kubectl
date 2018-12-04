@@ -32,5 +32,5 @@
   tasks:
     - name: kubectl version
       command: kubectl version --client
-      register: kubectl_version_result
-      changed_when: kubectl_version_result.rc != 0
+      register: result
+      changed_when: result is not succeeded
