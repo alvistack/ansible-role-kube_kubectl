@@ -15,4 +15,4 @@
 # limitations under the License.
 
 # URL for download kubectl binary.
-kubectl_url: "https://storage.googleapis.com/kubernetes-release/release/v1.12.3/bin/linux/amd64/kubectl"
+kubectl_download_url: "https://storage.googleapis.com/kubernetes-release/release/v1.12.3/bin/linux/amd64/kubectl"

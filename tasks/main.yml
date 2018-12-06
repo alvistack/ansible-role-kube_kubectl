@@ -58,7 +58,7 @@
 
 - name: download archive
   get_url:
-    url: "{{ kubectl_url }}"
+    url: "{{ kubectl_download_url }}"
     dest: "/usr/local/bin/kubectl"
     owner: "root"
     group: "root"
