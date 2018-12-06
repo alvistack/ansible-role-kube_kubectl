@@ -1,8 +1,16 @@
 # Ansible Role for kubectl
 
+## 2.2.0 - TBC
+
+### Major Changes
+
 ## 2.1.0 - TBC
 
 ### Major Changes
+
+  - CI with yamllint, ansible-lint and ansible-playbook --syntax-check
+  - CI with LXD, improve systemd support
+  - Use shell only when shell functionality is required
 
 ## 2.0.0 - 2018-11-28
 

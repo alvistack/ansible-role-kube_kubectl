@@ -63,6 +63,8 @@
     owner: "root"
     group: "root"
     mode: "0755"
+  register: result
+  until: result is succeeded
   tags: kubectl
 
 - name: touch files
@@ -82,8 +84,8 @@
     kubectl completion bash > /etc/bash_completion.d/kubectl.sh
   args:
     creates: "/etc/bash_completion.d/kubectl.sh"
-  register: bash_completion_result
-  changed_when: bash_completion_result.rc != 0
+  register: result
+  changed_when: result is not succeeded
   tags: kubectl
 
 - name: prepare files
