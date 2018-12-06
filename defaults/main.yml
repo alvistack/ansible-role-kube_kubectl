@@ -14,5 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Kubernetes version.
+kubernetes_version: "v1.12.3"
+
 # URL for download kubectl binary.
-kubectl_download_url: "https://storage.googleapis.com/kubernetes-release/release/v1.12.3/bin/linux/amd64/kubectl"
+kubectl_download_url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubernetes_version }}/bin/linux/amd64/kubectl"
