@@ -54,6 +54,7 @@
   with_items:
     - { dest: "/etc/bash_completion.d" }
     - { dest: "/root/.kube", mode: "0700" }
+    - { dest: "/usr/local/bin" }
   tags: kubectl
 
 - name: download archive

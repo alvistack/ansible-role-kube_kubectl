@@ -1,10 +1,14 @@
 # Ansible Role for kubectl
 
-## 2.2.0 - TBC
+## 2.3.0 - TBC
 
 ### Major Changes
 
-## 2.1.0 - TBC
+## 2.2.0 - 2019-01-26
+
+  - Minor typo fix
+
+## 2.1.0 - 2018-12-06
 
 ### Major Changes
 
