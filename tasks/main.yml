@@ -24,7 +24,7 @@
         - "{{ ansible_distribution | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
       paths: "../vars"
-      skip: "yes"
+      skip: true
   loop_control:
     loop_var: "loop_var"
   tags: kubectl
@@ -39,7 +39,7 @@
         - "{{ ansible_distribution | lower }}.yml"
         - "{{ ansible_os_family | lower }}.yml"
       paths: "."
-      skip: "yes"
+      skip: true
   loop_control:
     loop_var: "loop_var"
   tags: kubectl
@@ -75,7 +75,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
     content: ""
-    force: "no"
+    force: false
   with_items:
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
