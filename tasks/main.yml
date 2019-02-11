@@ -82,8 +82,10 @@
 
 - name: install kubectl bash completion
   shell: |
+    set -o pipefail
     kubectl completion bash > /etc/bash_completion.d/kubectl.sh
   args:
+    executable: "/bin/bash"
     creates: "/etc/bash_completion.d/kubectl.sh"
   register: result
   changed_when: result is not succeeded
