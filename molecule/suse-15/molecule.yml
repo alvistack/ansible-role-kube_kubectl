@@ -15,7 +15,7 @@
 # limitations under the License.
 
 scenario:
-  name: centos-6
+  name: suse-15
 driver:
   name: lxd
 platforms:
@@ -23,7 +23,7 @@ platforms:
     url: unix:/var/snap/lxd/common/lxd/unix.socket
     source:
       server: https://images.linuxcontainers.org
-      alias: centos/6/amd64
+      alias: opensuse/15.0/amd64
 lint:
   name: yamllint
 dependency:
