@@ -59,13 +59,24 @@
 
 - name: download archive
   get_url:
-    url: "{{ kubectl_download_url }}"
-    dest: "/usr/local/bin/kubectl"
-    owner: "root"
-    group: "root"
-    mode: "0755"
+    url: "{{ item.url }}"
+    dest: "{{ item.dest }}"
+    checksum: "{{ item.checksum }}"
+  with_items:
+    - "{{ kubectl_download }}"
   register: result
   until: result is succeeded
+  tags: kubectl
+
+- name: prepare files
+  file:
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    state: "{{ item.state | default('file') }}"
+  with_items:
+    - { dest: "/usr/local/bin/kubectl", mode: "0755" }
   tags: kubectl
 
 - name: touch files
@@ -101,5 +112,4 @@
   with_items:
     - { dest: "/etc/bash_completion.d/kubectl.sh", mode: "0755" }
     - { dest: "/root/.kube/config", mode: "0600" }
-    - { dest: "/usr/local/bin/kubectl", mode: "0755" }
   tags: kubectl
