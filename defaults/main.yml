@@ -15,8 +15,8 @@
 # limitations under the License.
 
 # URL for download kubectl binary.
-kubectl_version: "v1.14.0"
+kubectl_version: "v1.14.1"
 kubectl_download:
   url: "https://storage.googleapis.com/kubernetes-release/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
   dest: "/usr/local/bin/kubectl"
-  checksum: "sha1:7e3a3ea663153f900cbd52900a39c91fa9f334be"
+  checksum: "sha1:fd57c812083d5dde4745b3216453d0e1e4ee64df"
