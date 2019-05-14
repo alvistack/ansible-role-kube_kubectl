@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_pip: [
-  { state: "latest", name: "openshift" },
-  { state: "latest", name: "pyyaml" },
-]
+- name: python
+  src: https://github.com/alvistack/ansible-role-python
+  version: develop
