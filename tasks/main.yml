@@ -44,6 +44,16 @@
     loop_var: "loop_var"
   tags: kubectl
 
+- name: pip install
+  pip:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default(None) or omit }}"
+    version: "{{ item.version | default(None) or omit }}"
+  with_items: "{{ _pip }}"
+  register: result
+  until: result is succeeded
+  tags: kubectl
+
 - name: prepare directories
   file:
     dest: "{{ item.dest }}"
