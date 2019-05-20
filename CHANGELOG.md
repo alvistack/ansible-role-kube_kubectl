@@ -1,8 +1,15 @@
 # Ansible Role for kubectl
 
-## 2.7.0 - TBC
+## 3.1.0 - TBC
 
 ### Major Changes
+
+## 3.0.0 - 2019-05-20
+
+### Major Changes
+
+  - Upgrade minimal Ansible support to 2.8.0
+  - Install `openshift` python package for Ansible `k8s` module support
 
 ## 2.6.0 - 2019-05-04
 
