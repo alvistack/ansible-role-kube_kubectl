@@ -16,12 +16,14 @@
 
 - hosts: all
   remote_user: root
+  become: true
   roles:
     - role: python
     - role: kubectl
 
 - hosts: all
   remote_user: root
+  become: true
   tasks:
     - name: kubectl version
       command: kubectl version --client
