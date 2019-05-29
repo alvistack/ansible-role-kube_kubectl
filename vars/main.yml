@@ -13,3 +13,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+_kubectl_download:
+  v1.14.2:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.2/bin/linux/amd64/kubectl"
+    dest: "/usr/local/bin/kubectl"
+    checksum: "sha1:94866b439197f56d6e9011af7e79fda100b8ccbc"
+  v1.14.1:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.1/bin/linux/amd64/kubectl"
+    dest: "/usr/local/bin/kubectl"
+    checksum: "sha1:fd57c812083d5dde4745b3216453d0e1e4ee64df"
+  v1.13.6:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.13.6/bin/linux/amd64/kubectl"
+    dest: "/usr/local/bin/kubectl"
+    checksum: "sha1:b14c430ed3f4359c34686cccd0c349907ce004d2"
