@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubectl_download:
+  v1.14.3:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.3/bin/linux/amd64/kubectl"
+    dest: "/usr/local/bin/kubectl"
+    checksum: "sha1:91d9fe430c2a2af6b2c6d9286efeba26ca626fdd"
   v1.14.2:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.14.2/bin/linux/amd64/kubectl"
     dest: "/usr/local/bin/kubectl"
