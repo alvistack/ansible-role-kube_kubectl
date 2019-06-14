@@ -15,6 +15,5 @@
 # limitations under the License.
 
 _pip: [
-  { state: "present", name: "openshift" },
-  { state: "present", name: "pyyaml" },
+  { state: "present", name: "openshift>=0.9.0rc0" },
 ]
