@@ -55,7 +55,7 @@
     version: "{{ item.version | default(None) or omit }}"
     extra_args: "{{ item.extra_args | default(None) or omit }}"
     executable: "pip2"
-  with_items: "{{ _pip }}"
+  loop: "{{ _pip }}"
   register: result
   until: result is succeeded
   changed_when: result is not succeeded
@@ -68,7 +68,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
-  with_items:
+  loop:
     - { dest: "/etc/bash_completion.d" }
     - { dest: "/root/.kube", mode: "0700" }
     - { dest: "/usr/local/bin" }
@@ -79,7 +79,7 @@
     url: "{{ item.url }}"
     dest: "{{ item.dest }}"
     checksum: "{{ item.checksum }}"
-  with_items:
+  loop:
     - "{{ kubectl_download }}"
   register: result
   until: result is succeeded
@@ -92,7 +92,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
-  with_items:
+  loop:
     - { dest: "/usr/local/bin/kubectl", mode: "0755" }
   tags: kubectl
 
@@ -104,7 +104,7 @@
     mode: "{{ item.mode | default('0644') }}"
     content: ""
     force: false
-  with_items:
+  loop:
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
 
@@ -126,7 +126,7 @@
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
-  with_items:
+  loop:
     - { dest: "/etc/bash_completion.d/kubectl.sh", mode: "0755" }
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
