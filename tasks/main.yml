@@ -72,6 +72,7 @@
     - { dest: "/etc/bash_completion.d" }
     - { dest: "/root/.kube", mode: "0700" }
     - { dest: "/usr/local/bin" }
+    - { dest: "{{ kubectl_download.dest | dirname }}" }
   tags: kubectl
 
 - name: download archive
@@ -83,6 +84,18 @@
     - "{{ kubectl_download }}"
   register: result
   until: result is succeeded
+  tags: kubectl
+
+- name: copy archive
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "{{ item.mode | default('0644') }}"
+    remote_src: true
+  loop:
+    - { src: "{{ kubectl_download.dest }}", dest: "/usr/local/bin/kubectl", mode: "0755" }
   tags: kubectl
 
 - name: prepare files
