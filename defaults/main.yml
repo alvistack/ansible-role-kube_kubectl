@@ -15,7 +15,7 @@
 # limitations under the License.
 
 # kubectl version.
-kubectl_version: "v1.15.0"
+kubectl_version: "v1.15.1"
 
 # kubectl download details.
 kubectl_download: "{{ _kubectl_download[kubectl_version] }}"
