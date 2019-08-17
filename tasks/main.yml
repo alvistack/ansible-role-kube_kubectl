@@ -82,8 +82,8 @@
     checksum: "{{ item.checksum }}"
   loop:
     - "{{ kubectl_download }}"
-  register: result
-  until: result is succeeded
+  register: get_url_result
+  until: get_url_result is succeeded
   tags: kubectl
 
 - name: copy archive
@@ -96,6 +96,7 @@
     remote_src: true
   loop:
     - { src: "{{ kubectl_download.dest }}", dest: "/usr/local/bin/kubectl", mode: "0755" }
+  when: get_url_result is changed
   tags: kubectl
 
 - name: prepare files
