@@ -86,16 +86,13 @@
   until: get_url_result is succeeded
   tags: kubectl
 
-- name: copy archive
-  copy:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    remote_src: true
-  loop:
-    - { src: "{{ kubectl_download.dest }}", dest: "/usr/local/bin/kubectl", mode: "0755" }
+- name: unarchive package
+  shell: |
+    set -o pipefail
+    cd /usr/local/bin
+    TMP_DIR="`mktemp -d`" && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl && mv $TMP_DIR/kubectl . && rm -rf $TMP_DIR
+  args:
+    executable: "/bin/bash"
   when: get_url_result is changed
   tags: kubectl
 
