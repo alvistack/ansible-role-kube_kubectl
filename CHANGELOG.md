@@ -4,8 +4,8 @@
 
 ### Major Changes
 
-  - Update LXD test profile for openSUSE LEAP 15.1
   - Download archives to `/var/cache/ansible`
+  - Upgrade packages if archives not found from `/var/cache/ansible`
 
 ## 3.2.0 - 2019-07-08
 
