@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubectl_download:
+  v1.15.4:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.15.4/bin/linux/amd64/kubectl"
+    dest: "/var/cache/ansible/kubectl-v1.15.4"
+    checksum: "sha1:58d162471317e9e41f819a98766dfa91048fb597"
   v1.15.3:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.15.3/bin/linux/amd64/kubectl"
     dest: "/var/cache/ansible/kubectl-v1.15.3"
