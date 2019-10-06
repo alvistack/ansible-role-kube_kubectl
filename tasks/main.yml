@@ -122,9 +122,11 @@
   tags: kubectl
 
 - name: install kubectl bash completion
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   shell: |
     set -o pipefail
-    /usr/local/bin/kubectl completion bash > /etc/bash_completion.d/kubectl.sh
+    kubectl completion bash > /etc/bash_completion.d/kubectl.sh
   args:
     executable: "/bin/bash"
     creates: "/etc/bash_completion.d/kubectl.sh"
