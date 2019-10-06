@@ -25,7 +25,7 @@
   remote_user: root
   become: true
   tasks:
-    - name: kubectl version
-      command: kubectl version --client
+    - name: /usr/local/bin/kubectl version
+      command: /usr/local/bin/kubectl version --client
       register: result
       changed_when: result is not succeeded
