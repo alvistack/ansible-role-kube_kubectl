@@ -84,6 +84,7 @@
     url: "{{ item.url }}"
     dest: "{{ item.dest }}"
     checksum: "{{ item.checksum }}"
+    timeout: 300
   loop:
     - "{{ kubectl_download }}"
   register: get_url_result
