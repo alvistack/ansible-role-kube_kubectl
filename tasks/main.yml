@@ -95,7 +95,10 @@
   shell: |
     set -o pipefail
     cd /usr/local/bin
-    TMP_DIR="`mktemp -d`" && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl && mv $TMP_DIR/kubectl . && rm -rf $TMP_DIR
+    TMP_DIR="`mktemp -d`" \
+      && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
+      && mv $TMP_DIR/kubectl . \
+      && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
   when: get_url_result is changed
