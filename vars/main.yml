@@ -23,6 +23,10 @@ _kubectl_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl"
     dest: "/var/cache/ansible/kubectl-v1.17.0"
     checksum: "sha1:67318c9370f9101920d11b8827eca5a0390a1698"
+  v1.16.5:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.5/bin/linux/amd64/kubectl"
+    dest: "/var/cache/ansible/kubectl-v1.16.5"
+    checksum: "sha1:c2304146947f689b4b43015331731c404ee485b9"
   v1.16.4:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.16.4/bin/linux/amd64/kubectl"
     dest: "/var/cache/ansible/kubectl-v1.16.4"
