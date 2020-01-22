@@ -148,6 +148,6 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/bash_completion.d/kubectl", mode: "0755" }
+    - { dest: "/etc/bash_completion.d/kubectl" }
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
