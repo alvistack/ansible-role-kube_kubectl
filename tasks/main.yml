@@ -132,10 +132,10 @@
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   shell: |
     set -o pipefail
-    kubectl completion bash > /etc/bash_completion.d/kubectl.sh
+    kubectl completion bash > /etc/bash_completion.d/kubectl
   args:
     executable: "/bin/bash"
-    creates: "/etc/bash_completion.d/kubectl.sh"
+    creates: "/etc/bash_completion.d/kubectl"
   register: result
   changed_when: result is not succeeded
   tags: kubectl
@@ -148,6 +148,6 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/bash_completion.d/kubectl.sh", mode: "0755" }
+    - { dest: "/etc/bash_completion.d/kubectl", mode: "0755" }
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
