@@ -127,7 +127,7 @@
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
 
-- name: install kubectl bash completion
+- name: install bash completion
   environment:
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   shell: |
