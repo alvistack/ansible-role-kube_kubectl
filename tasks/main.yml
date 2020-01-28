@@ -97,6 +97,8 @@
     cd /usr/local/bin
     TMP_DIR="`mktemp -d`" \
       && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
+      && chown root:root $TMP_DIR/kubectl \
+      && chmod 0755 $TMP_DIR/kubectl \
       && mv $TMP_DIR/kubectl . \
       && rm -rf $TMP_DIR
   args:
@@ -127,7 +129,7 @@
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
 
-- name: install kubectl bash completion
+- name: install bash completion
   environment:
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   shell: |
@@ -148,6 +150,6 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('file') }}"
   loop:
-    - { dest: "/etc/bash_completion.d/kubectl", mode: "0755" }
+    - { dest: "/etc/bash_completion.d/kubectl" }
     - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
