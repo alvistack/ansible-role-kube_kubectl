@@ -97,6 +97,8 @@
     cd /usr/local/bin
     TMP_DIR="`mktemp -d`" \
       && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
+      && chown root:root $TMP_DIR/kubectl \
+      && chmod 0755 $TMP_DIR/kubectl \
       && mv $TMP_DIR/kubectl . \
       && rm -rf $TMP_DIR
   args:
