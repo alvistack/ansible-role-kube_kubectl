@@ -5,6 +5,7 @@
 ### Major Changes
 
   - Add `default` scenario with Docker on Ubuntu 18.04
+  - Always mount `/run/docker.sock` from host
   - Bugfix bash completion
 
 ## 4.1.0 - 2020-01-16
