@@ -48,23 +48,6 @@
   ignore_errors: true
   tags: kubectl
 
-- name: pip install
-  environment:
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  vars:
-    ansible_python_interpreter: "python3"
-  pip:
-    name: "{{ item.name }}"
-    state: "{{ item.state | default(None) or omit }}"
-    version: "{{ item.version | default(None) or omit }}"
-    extra_args: "--ignore-installed --prefix=/usr/local"
-    executable: "pip3"
-  loop: "{{ _pip }}"
-  register: result
-  until: result is succeeded
-  changed_when: result is not succeeded
-  tags: kubectl
-
 - name: prepare directories
   file:
     dest: "{{ item.dest }}"
