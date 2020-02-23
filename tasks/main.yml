@@ -80,7 +80,7 @@
   shell: |
     set -o pipefail
     cd /usr/local/bin
-    TMP_DIR="`mktemp -d`" \
+    TMP_DIR="$(mktemp -d)" \
       && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
       && chown root:root $TMP_DIR/kubectl \
       && chmod 0755 $TMP_DIR/kubectl \
