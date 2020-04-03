@@ -1,6 +1,6 @@
 # Ansible Role for kubectl
 
-[![Travis](https://img.shields.io/travis/alvistack/ansible-role-kubectl.svg)](https://travis-ci.org/alvistack/ansible-role-kubectl)
+[![Travis](https://img.shields.io/travis/com/alvistack/ansible-role-kubectl.svg)](https://travis-ci.com/alvistack/ansible-role-kubectl)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kubectl.svg)](https://github.com/alvistack/ansible-role-kubectl)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kubectl.svg)](https://github.com/alvistack/ansible-role-kubectl/blob/master/LICENSE)
 [![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kubectl-blue.svg)](https://galaxy.ansible.com/alvistack/kubectl)
