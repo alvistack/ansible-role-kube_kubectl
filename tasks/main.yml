@@ -111,7 +111,17 @@
     content: ""
     force: false
   loop:
-    - { dest: "/root/.kube/config", mode: "0600" }
+    - { dest: "/etc/kubernetes/admin.conf", mode: "0600" }
+  tags: kubectl
+
+- name: symlink files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    force: "{{ item.force | default(true) }}"
+    state: "{{ item.state | default('link') }}"
+  loop:
+    - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config" }
   tags: kubectl
 
 - name: install bash completion
@@ -136,5 +146,6 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/bash_completion.d/kubectl" }
-    - { dest: "/root/.kube/config", mode: "0600" }
+    - { dest: "/etc/kubernetes/admin.conf", mode: "0600" }
+    - { dest: "/root/.kube/config", state: "link" }
   tags: kubectl
