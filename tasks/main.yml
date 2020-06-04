@@ -91,6 +91,17 @@
   when: get_url_result is changed
   tags: kubectl
 
+- name: install bash completion
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  shell: |
+    set -o pipefail
+    kubectl completion bash > /etc/bash_completion.d/kubectl
+  args:
+    executable: "/bin/bash"
+  when: get_url_result is changed
+  tags: kubectl
+
 - name: prepare files
   file:
     dest: "{{ item.dest }}"
@@ -110,19 +121,6 @@
     state: "{{ item.state | default('link') }}"
   loop:
     - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config" }
-  tags: kubectl
-
-- name: install bash completion
-  environment:
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  shell: |
-    set -o pipefail
-    kubectl completion bash > /etc/bash_completion.d/kubectl
-  args:
-    executable: "/bin/bash"
-    creates: "/etc/bash_completion.d/kubectl"
-  register: result
-  changed_when: result is not succeeded
   tags: kubectl
 
 - name: prepare files
