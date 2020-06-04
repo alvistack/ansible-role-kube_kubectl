@@ -91,6 +91,18 @@
   when: get_url_result is changed
   tags: kubectl
 
+- name: install bash completion
+  environment:
+    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  shell: |
+    set -o pipefail
+    kubectl completion bash > /etc/bash_completion.d/kubectl
+  args:
+    executable: "/bin/bash"
+  changed_when: false
+  ignore_errors: true
+  tags: kubectl
+
 - name: prepare files
   file:
     dest: "{{ item.dest }}"
@@ -102,29 +114,14 @@
     - { dest: "/usr/local/bin/kubectl", mode: "0755" }
   tags: kubectl
 
-- name: touch files
-  copy:
+- name: symlink files
+  file:
+    src: "{{ item.src }}"
     dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    content: ""
-    force: false
+    force: "{{ item.force | default(true) }}"
+    state: "{{ item.state | default('link') }}"
   loop:
-    - { dest: "/root/.kube/config", mode: "0600" }
-  tags: kubectl
-
-- name: install bash completion
-  environment:
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  shell: |
-    set -o pipefail
-    kubectl completion bash > /etc/bash_completion.d/kubectl
-  args:
-    executable: "/bin/bash"
-    creates: "/etc/bash_completion.d/kubectl"
-  register: result
-  changed_when: result is not succeeded
+    - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config" }
   tags: kubectl
 
 - name: prepare files
@@ -136,5 +133,4 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/bash_completion.d/kubectl" }
-    - { dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
