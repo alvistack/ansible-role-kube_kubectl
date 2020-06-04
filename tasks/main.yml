@@ -134,5 +134,4 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/bash_completion.d/kubectl" }
-    - { dest: "/root/.kube/config", mode: "0600", state: "link" }
   tags: kubectl
