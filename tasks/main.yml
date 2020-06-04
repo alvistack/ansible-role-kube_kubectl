@@ -57,6 +57,7 @@
     state: "{{ item.state | default('directory') }}"
   loop:
     - { dest: "/etc/bash_completion.d" }
+    - { dest: "/etc/kubernetes" }
     - { dest: "/root/.kube", mode: "0700" }
     - { dest: "/usr/local/bin" }
     - { dest: "{{ kubectl_download.dest | dirname }}" }
@@ -147,5 +148,5 @@
   loop:
     - { dest: "/etc/bash_completion.d/kubectl" }
     - { dest: "/etc/kubernetes/admin.conf", mode: "0600" }
-    - { dest: "/root/.kube/config", state: "link" }
+    - { dest: "/root/.kube/config", mode: "0600", state: "link" }
   tags: kubectl
