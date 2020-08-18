@@ -122,7 +122,7 @@
     mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('link') }}"
   loop:
-    - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config" }
+    - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
 
 - name: prepare files
