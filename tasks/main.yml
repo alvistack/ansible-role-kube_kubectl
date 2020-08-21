@@ -69,6 +69,7 @@
     url: "{{ item.url }}"
     dest: "{{ item.dest }}"
     checksum: "{{ item.checksum }}"
+    mode: "{{ item.mode | default('0644') }}"
     timeout: 300
   loop:
     - "{{ kubectl_download }}"
@@ -119,9 +120,11 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     force: "{{ item.force | default(true) }}"
+    mode: "{{ item.mode | default('0644') }}"
     state: "{{ item.state | default('link') }}"
+    follow: false
   loop:
-    - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config" }
+    - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config", mode: "0600" }
   tags: kubectl
 
 - name: prepare files
