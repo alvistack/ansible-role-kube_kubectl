@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubectl_download:
+  v1.19.1:
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.1/bin/linux/amd64/kubectl"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.19.1"
+    checksum: "sha1:72441d99ec9efe787c43368a7b1534c722834b52"
   v1.19.0:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.0/bin/linux/amd64/kubectl"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.19.0"
