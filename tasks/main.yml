@@ -16,7 +16,6 @@
 
 - name: include default variables
   include_vars: "../vars/main.yml"
-  tags: kubectl
 
 - name: include release specific variables
   include_vars: "{{ lookup('first_found', _params) }}"
@@ -31,7 +30,6 @@
       paths:
         - "../vars"
   ignore_errors: true
-  tags: kubectl
 
 - name: include release specific tasks
   include_tasks: "{{ lookup('first_found', _params) }}"
@@ -46,7 +44,6 @@
       paths:
         - "."
   ignore_errors: true
-  tags: kubectl
 
 - name: prepare directories
   file:
@@ -60,7 +57,6 @@
     - { dest: "/root/.kube", mode: "0700" }
     - { dest: "/usr/local/bin" }
     - { dest: "{{ kubectl_download.dest | dirname }}" }
-  tags: kubectl
 
 - name: download archive
   vars:
@@ -75,7 +71,6 @@
     - "{{ kubectl_download }}"
   register: get_url_result
   until: get_url_result is succeeded
-  tags: kubectl
 
 - name: unarchive package
   shell: |
@@ -90,7 +85,6 @@
   args:
     executable: "/bin/bash"
   when: get_url_result is changed
-  tags: kubectl
 
 - name: install bash completion
   environment:
@@ -102,7 +96,6 @@
     executable: "/bin/bash"
   changed_when: false
   ignore_errors: true
-  tags: kubectl
 
 - name: prepare files
   file:
@@ -113,7 +106,6 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/usr/local/bin/kubectl", mode: "0755" }
-  tags: kubectl
 
 - name: symlink files
   file:
@@ -125,7 +117,6 @@
     follow: false
   loop:
     - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config", mode: "0600" }
-  tags: kubectl
 
 - name: prepare files
   file:
@@ -136,4 +127,3 @@
     state: "{{ item.state | default('file') }}"
   loop:
     - { dest: "/etc/bash_completion.d/kubectl" }
-  tags: kubectl
