@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubectl_download:
+  "v1.19.4":
+    url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.4/bin/linux/amd64/kubectl"
+    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.19.4"
+    checksum: "sha1:267bc0a8dca187e320c6bcb6411492ff283e83de"
   "v1.19.3":
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.3/bin/linux/amd64/kubectl"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.19.3"
@@ -23,10 +27,6 @@ _kubectl_download:
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.2/bin/linux/amd64/kubectl"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.19.2"
     checksum: "sha1:67273c2ad1c8b1e6bc0a9277665d966fe3e47de3"
-  "v1.19.1":
-    url: "https://storage.googleapis.com/kubernetes-release/release/v1.19.1/bin/linux/amd64/kubectl"
-    dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.19.1"
-    checksum: "sha1:72441d99ec9efe787c43368a7b1534c722834b52"
   "v1.18.10":
     url: "https://storage.googleapis.com/kubernetes-release/release/v1.18.10/bin/linux/amd64/kubectl"
     dest: "{{ ansible_user_dir }}/.ansible/tmp/kubectl-v1.18.10"
