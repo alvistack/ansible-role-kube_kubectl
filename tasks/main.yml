@@ -74,7 +74,7 @@
 
 - name: unarchive package
   shell: |
-    set -o pipefail
+    set -euo pipefail
     cd /usr/local/bin
     TMP_DIR="$(mktemp -d)" \
       && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
@@ -90,7 +90,7 @@
   environment:
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   shell: |
-    set -o pipefail
+    set -euo pipefail
     kubectl completion bash > /etc/bash_completion.d/kubectl
   args:
     executable: "/bin/bash"
