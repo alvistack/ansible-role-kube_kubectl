@@ -15,6 +15,10 @@
 # limitations under the License.
 
 _kubectl_download:
+  "v1.20.4":
+    url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.4/bin/linux/amd64/kubectl"
+    dest: "/var/cache/ansible/98e8aea149b00f653beeb53d4bd27edda9e73b48fed156c4a0aa1dabe4b1794c/kubectl-v1.20.4"
+    checksum: "sha256:98e8aea149b00f653beeb53d4bd27edda9e73b48fed156c4a0aa1dabe4b1794c"
   "v1.20.3":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.3/bin/linux/amd64/kubectl"
     dest: "/var/cache/ansible/9124ace617387fdb78b95a9b2551d1b447bc8007caea68359743895784262fc8/kubectl-v1.20.3"
@@ -23,10 +27,6 @@ _kubectl_download:
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.2/bin/linux/amd64/kubectl"
     dest: "/var/cache/ansible/2583b1c9fbfc5443a722fb04cf0cc83df18e45880a2cf1f6b52d9f595c5beb88/kubectl-v1.20.2"
     checksum: "sha256:2583b1c9fbfc5443a722fb04cf0cc83df18e45880a2cf1f6b52d9f595c5beb88"
-  "v1.20.1":
-    url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.1/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/3f4b52a8072013e4cd34c9ea07e3c0c4e0350b227e00507fb1ae44a9adbf6785/kubectl-v1.20.1"
-    checksum: "sha256:3f4b52a8072013e4cd34c9ea07e3c0c4e0350b227e00507fb1ae44a9adbf6785"
   "v1.19.8":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.8/bin/linux/amd64/kubectl"
     dest: "/var/cache/ansible/a0737d3a15ca177816b6fb1fd59bdd5a3751bfdc66de4e08dffddba84e38bf3f/kubectl-v1.19.8"
