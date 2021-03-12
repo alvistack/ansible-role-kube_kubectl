@@ -57,22 +57,11 @@
     - { dest: "/root/.kube", mode: "0700" }
     - { dest: "/usr/local/bin" }
     - { dest: "{{ kubectl_download.dest | dirname }}" }
-  register: file_result
+  notify:
+    - kubectl | download archive
 
-- name: download archive
-  vars:
-    ansible_python_interpreter: "python3"
-  get_url:
-    url: "{{ item.url }}"
-    dest: "{{ item.dest }}"
-    checksum: "{{ item.checksum }}"
-    mode: "{{ item.mode | default('0644') }}"
-    timeout: 300
-  loop:
-    - "{{ kubectl_download }}"
-  when: file_result is changed
-  register: result
-  until: result is succeeded
+- name: flush handlers
+  meta: flush_handlers
 
 - name: unarchive package
   shell: |
