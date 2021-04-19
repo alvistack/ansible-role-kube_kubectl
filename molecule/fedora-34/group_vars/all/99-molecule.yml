@@ -13,12 +13,3 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-# Kubernetes version.
-kubernetes_version: "v1.20.6"
-
-# kubectl version.
-kubectl_version: "{{ kubernetes_version }}"
-
-# kubectl download details.
-kubectl_download: "{{ _kubectl_download[kubectl_version] }}"
