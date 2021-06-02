@@ -22,33 +22,33 @@ _kubectl_version:
 _kubectl_download:
   "v1.21.1":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.21.1/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/58785190e2b4fc6891e01108e41f9ba5db26e04cebb7c1ac639919a931ce9233/kubectl-v1.21.1"
-    sha256sum: "58785190e2b4fc6891e01108e41f9ba5db26e04cebb7c1ac639919a931ce9233"
+    dest: "/tmp/58785190e2b4fc6891e01108e41f9ba5db26e04cebb7c1ac639919a931ce9233/kubectl-v1.21.1"
+    checksum: "58785190e2b4fc6891e01108e41f9ba5db26e04cebb7c1ac639919a931ce9233"
   "v1.21.0":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.21.0/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/9f74f2fa7ee32ad07e17211725992248470310ca1988214518806b39b1dad9f0/kubectl-v1.21.0"
-    sha256sum: "9f74f2fa7ee32ad07e17211725992248470310ca1988214518806b39b1dad9f0"
+    dest: "/tmp/9f74f2fa7ee32ad07e17211725992248470310ca1988214518806b39b1dad9f0/kubectl-v1.21.0"
+    checksum: "9f74f2fa7ee32ad07e17211725992248470310ca1988214518806b39b1dad9f0"
   "v1.20.7":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.7/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/2ea3006a64d48657ac72223a01c6df0e5b827703263f2586da28044ea9e97daf/kubectl-v1.20.7"
-    sha256sum: "2ea3006a64d48657ac72223a01c6df0e5b827703263f2586da28044ea9e97daf"
+    dest: "/tmp/2ea3006a64d48657ac72223a01c6df0e5b827703263f2586da28044ea9e97daf/kubectl-v1.20.7"
+    checksum: "2ea3006a64d48657ac72223a01c6df0e5b827703263f2586da28044ea9e97daf"
   "v1.20.6":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.6/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/89ae000df6bbdf38ae4307cc4ecc0347d5c871476862912c0a765db9bf05284e/kubectl-v1.20.6"
-    sha256sum: "89ae000df6bbdf38ae4307cc4ecc0347d5c871476862912c0a765db9bf05284e"
+    dest: "/tmp/89ae000df6bbdf38ae4307cc4ecc0347d5c871476862912c0a765db9bf05284e/kubectl-v1.20.6"
+    checksum: "89ae000df6bbdf38ae4307cc4ecc0347d5c871476862912c0a765db9bf05284e"
   "v1.20.5":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/7f9dbb80190945a5077dc5f4230202c22f68f9bd7f20c213c3cf5a74abf55e56/kubectl-v1.20.5"
-    sha256sum: "7f9dbb80190945a5077dc5f4230202c22f68f9bd7f20c213c3cf5a74abf55e56"
+    dest: "/tmp/7f9dbb80190945a5077dc5f4230202c22f68f9bd7f20c213c3cf5a74abf55e56/kubectl-v1.20.5"
+    checksum: "7f9dbb80190945a5077dc5f4230202c22f68f9bd7f20c213c3cf5a74abf55e56"
   "v1.19.11":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.11/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/10b3bb2526b47f52be9f39cee6e42f8b30acc5b415e7bb7b446500bb41a6fd03/kubectl-v1.19.11"
-    sha256sum: "10b3bb2526b47f52be9f39cee6e42f8b30acc5b415e7bb7b446500bb41a6fd03"
+    dest: "/tmp/10b3bb2526b47f52be9f39cee6e42f8b30acc5b415e7bb7b446500bb41a6fd03/kubectl-v1.19.11"
+    checksum: "10b3bb2526b47f52be9f39cee6e42f8b30acc5b415e7bb7b446500bb41a6fd03"
   "v1.19.10":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.10/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/dbacc1a372f00e2d15ad9a39925191c4e314e39b37dcac3e5b2f5e98f4be0d47/kubectl-v1.19.10"
-    sha256sum: "dbacc1a372f00e2d15ad9a39925191c4e314e39b37dcac3e5b2f5e98f4be0d47"
+    dest: "/tmp/dbacc1a372f00e2d15ad9a39925191c4e314e39b37dcac3e5b2f5e98f4be0d47/kubectl-v1.19.10"
+    checksum: "dbacc1a372f00e2d15ad9a39925191c4e314e39b37dcac3e5b2f5e98f4be0d47"
   "v1.19.9":
     url: "http://storage.googleapis.com/kubernetes-release/release/v1.19.9/bin/linux/amd64/kubectl"
-    dest: "/var/cache/ansible/7128c9e38ab9c445a3b02d3d0b3f0f15fe7fbca56fd87b84e575d7b29e999ad9/kubectl-v1.19.9"
-    sha256sum: "7128c9e38ab9c445a3b02d3d0b3f0f15fe7fbca56fd87b84e575d7b29e999ad9"
+    dest: "/tmp/7128c9e38ab9c445a3b02d3d0b3f0f15fe7fbca56fd87b84e575d7b29e999ad9/kubectl-v1.19.9"
+    checksum: "7128c9e38ab9c445a3b02d3d0b3f0f15fe7fbca56fd87b84e575d7b29e999ad9"
