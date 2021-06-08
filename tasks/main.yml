@@ -67,28 +67,28 @@
 
 - name: download archive
   shell: |
-    set -euo pipefail
+    set -euxo pipefail
+    mkdir -p /var/log/ansible
+    exec &> >(tee -a /var/log/ansible/{{ kubectl_download.checksum }}-get_url.log)
     TMP_DIR="$(mktemp -d)" \
       && cd $TMP_DIR \
-      && mkdir -p .{{ item.dest | dirname }} \
-      && curl -skL -m 300 {{ item.url }} > .{{ item.dest }} \
-      && echo -n "{{ item.checksum }} .{{ item.dest }}" | sha256sum -c - \
-      && mkdir -p {{ item.dest | dirname }} \
-      && mv .{{ item.dest }} {{ item.dest }} \
+      && mkdir -p .{{ kubectl_download.dest | dirname }} \
+      && curl -skL -m 300 {{ kubectl_download.url }} > .{{ kubectl_download.dest }} \
+      && echo -n "{{ kubectl_download.checksum }} .{{ kubectl_download.dest }}" | sha256sum -c - \
+      && mkdir -p {{ kubectl_download.dest | dirname }} \
+      && mv .{{ kubectl_download.dest }} {{ kubectl_download.dest }} \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "{{ item.dest | dirname }}"
-  loop:
-    - "{{ kubectl_download }}"
+    creates: "/var/log/ansible/{{ kubectl_download.checksum }}-get_url.log"
   register: result
   until: result is succeeded
 
 - name: unarchive package
   shell: |
-    set -euo pipefail
+    set -euxo pipefail
     mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kubectl_download.checksum }}.log)
+    exec &> >(tee -a /var/log/ansible/{{ kubectl_download.checksum }}-unarchive.log)
     cd /usr/local/bin
     TMP_DIR="$(mktemp -d)" \
       && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
@@ -98,13 +98,13 @@
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kubectl_download.checksum }}.log"
+    creates: "/var/log/ansible/{{ kubectl_download.checksum }}-unarchive.log"
 
 - name: install bash completion
   environment:
     PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
   shell: |
-    set -euo pipefail
+    set -euxo pipefail
     kubectl completion bash > /etc/bash_completion.d/kubectl
   args:
     executable: "/bin/bash"
