@@ -4,6 +4,8 @@
 
 ### Major Changes
 
+  - Install package with upstream repository
+  - Restrict package to a fixed version
   - Upgrade minimal Ansible community package support to 4.1.0
   - Support Debian 11
   - Support openSUSE Leap 15.3

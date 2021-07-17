@@ -14,5 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_zypper_repository:
+  - name: "devel:kubic"
+    repo: "http://download.opensuse.org/repositories/devel:kubic/openSUSE_Leap_15.3"
+    state: "present"
+
 _zypper:
   - { state: "latest", name: "bash-completion" }
+  - { state: "latest", name: "kubernetes{{ kubernetes_release }}-client" }

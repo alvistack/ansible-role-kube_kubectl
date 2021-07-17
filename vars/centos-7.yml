@@ -14,5 +14,27 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+_rpm_key:
+  - key: "https://packages.cloud.google.com/yum/doc/yum-key.gpg"
+    fingerprint: "7F92E05B31093BEF5A3C2D38FEEA9169307EA071"
+    state: "present"
+  - key: "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+    fingerprint: "3749E1BA95A86CE054546ED2F09C394C3E1BA8D5"
+    state: "present"
+
+_yum_repository:
+  - file: "kubernetes"
+    name: "kubernetes"
+    description: "kubernetes"
+    baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
+    enabled: true
+    priority: "2"
+    gpgcheck: true
+    gpgkey:
+      - "https://packages.cloud.google.com/yum/doc/yum-key.gpg"
+      - "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+    state: "present"
+
 _yum:
   - { state: "latest", name: "bash-completion" }
+  - { state: "present", name: "kubectl-{{ kubectl_version }}-0" }
