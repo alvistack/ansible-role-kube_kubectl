@@ -69,18 +69,18 @@
   shell: |
     set -euxo pipefail
     mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kubectl_download.checksum }}-get_url.log)
+    exec &> >(tee -a /var/log/ansible/{{ kube_kubectl_download.checksum }}-get_url.log)
     TMP_DIR="$(mktemp -d)" \
       && cd $TMP_DIR \
-      && mkdir -p .{{ kubectl_download.dest | dirname }} \
-      && curl -skL -m 300 {{ kubectl_download.url }} > .{{ kubectl_download.dest }} \
-      && echo -n "{{ kubectl_download.checksum }} .{{ kubectl_download.dest }}" | sha256sum -c - \
-      && mkdir -p {{ kubectl_download.dest | dirname }} \
-      && mv .{{ kubectl_download.dest }} {{ kubectl_download.dest }} \
+      && mkdir -p .{{ kube_kubectl_download.dest | dirname }} \
+      && curl -skL -m 300 {{ kube_kubectl_download.url }} > .{{ kube_kubectl_download.dest }} \
+      && echo -n "{{ kube_kubectl_download.checksum }} .{{ kube_kubectl_download.dest }}" | sha256sum -c - \
+      && mkdir -p {{ kube_kubectl_download.dest | dirname }} \
+      && mv .{{ kube_kubectl_download.dest }} {{ kube_kubectl_download.dest }} \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kubectl_download.checksum }}-get_url.log"
+    creates: "/var/log/ansible/{{ kube_kubectl_download.checksum }}-get_url.log"
   register: result
   until: result is succeeded
 
@@ -88,17 +88,17 @@
   shell: |
     set -euxo pipefail
     mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kubectl_download.checksum }}-unarchive.log)
+    exec &> >(tee -a /var/log/ansible/{{ kube_kubectl_download.checksum }}-unarchive.log)
     cd /usr/local/bin
     TMP_DIR="$(mktemp -d)" \
-      && cp {{ kubectl_download.dest }} $TMP_DIR/kubectl \
+      && cp {{ kube_kubectl_download.dest }} $TMP_DIR/kubectl \
       && chown root:root $TMP_DIR/kubectl \
       && chmod 0755 $TMP_DIR/kubectl \
       && mv $TMP_DIR/kubectl . \
       && rm -rf $TMP_DIR
   args:
     executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kubectl_download.checksum }}-unarchive.log"
+    creates: "/var/log/ansible/{{ kube_kubectl_download.checksum }}-unarchive.log"
 
 - name: install bash completion
   environment:

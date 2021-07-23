@@ -15,10 +15,10 @@
 # limitations under the License.
 
 # Kubernetes release.
-kubernetes_release: "1.21"
+kube_release: "1.21"
 
 # kubectl version.
-kubectl_version: "{{ _kubectl_version[kubernetes_release] }}"
+kube_kubectl_version: "{{ _kube_kubectl_version[kube_release] }}"
 
 # kubectl download details.
-kubectl_download: "{{ _kubectl_download[kubectl_version] }}"
+kube_kubectl_download: "{{ _kube_kubectl_download[kube_kubectl_version] }}"
