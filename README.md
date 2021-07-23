@@ -1,9 +1,9 @@
 # Ansible Role for kubectl
 
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-kubectl/master)](https://gitlab.com/alvistack/ansible-role-kubectl/-/pipelines)
-[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kubectl.svg)](https://github.com/alvistack/ansible-role-kubectl/releases)
-[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kubectl.svg)](https://github.com/alvistack/ansible-role-kubectl/blob/master/LICENSE)
-[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kubectl-blue.svg)](https://galaxy.ansible.com/alvistack/kubectl)
+[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-kube_kubectl/master)](https://gitlab.com/alvistack/ansible-role-kube_kubectl/-/pipelines)
+[![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kube_kubectl.svg)](https://github.com/alvistack/ansible-role-kube_kubectl/releases)
+[![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kube_kubectl.svg)](https://github.com/alvistack/ansible-role-kube_kubectl/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/badge/galaxy-alvistack.kube_kubectl-blue.svg)](https://galaxy.ansible.com/alvistack/kube_kubectl)
 
 Ansible Role for kubectl Installation.
 
