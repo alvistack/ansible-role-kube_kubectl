@@ -19,6 +19,3 @@ kube_release: "{{ _kube_release }}"
 
 # kubectl version.
 kube_kubectl_version: "{{ _kube_kubectl_version[kube_release] }}"
-
-# kubectl download details.
-kube_kubectl_download: "{{ _kube_kubectl_download[kube_kubectl_version] }}"
