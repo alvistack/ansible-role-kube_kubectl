@@ -61,55 +61,7 @@
     mode: "{{ item.mode | default('0755') }}"
     state: "{{ item.state | default('directory') }}"
   loop:
-    - { dest: "/etc/bash_completion.d" }
     - { dest: "/root/.kube", mode: "0700" }
-    - { dest: "/usr/local/bin" }
-
-- name: download archive
-  shell: |
-    set -euxo pipefail
-    mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kube_kubectl_download.checksum }}-get_url.log)
-    TMP_DIR="$(mktemp -d)" \
-      && cd $TMP_DIR \
-      && mkdir -p .{{ kube_kubectl_download.dest | dirname }} \
-      && curl -skL -m 300 {{ kube_kubectl_download.url }} > .{{ kube_kubectl_download.dest }} \
-      && echo -n "{{ kube_kubectl_download.checksum }} .{{ kube_kubectl_download.dest }}" | sha256sum -c - \
-      && mkdir -p {{ kube_kubectl_download.dest | dirname }} \
-      && mv .{{ kube_kubectl_download.dest }} {{ kube_kubectl_download.dest }} \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kube_kubectl_download.checksum }}-get_url.log"
-  register: result
-  until: result is succeeded
-
-- name: unarchive package
-  shell: |
-    set -euxo pipefail
-    mkdir -p /var/log/ansible
-    exec &> >(tee -a /var/log/ansible/{{ kube_kubectl_download.checksum }}-unarchive.log)
-    cd /usr/local/bin
-    TMP_DIR="$(mktemp -d)" \
-      && cp {{ kube_kubectl_download.dest }} $TMP_DIR/kubectl \
-      && chown root:root $TMP_DIR/kubectl \
-      && chmod 0755 $TMP_DIR/kubectl \
-      && mv $TMP_DIR/kubectl . \
-      && rm -rf $TMP_DIR
-  args:
-    executable: "/bin/bash"
-    creates: "/var/log/ansible/{{ kube_kubectl_download.checksum }}-unarchive.log"
-
-- name: install bash completion
-  environment:
-    PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-  shell: |
-    set -euxo pipefail
-    kubectl completion bash > /etc/bash_completion.d/kubectl
-  args:
-    executable: "/bin/bash"
-  changed_when: false
-  failed_when: false
 
 - name: symlink files
   file:
@@ -121,14 +73,3 @@
     follow: false
   loop:
     - { src: "/etc/kubernetes/admin.conf", dest: "/root/.kube/config", mode: "0600" }
-
-- name: prepare files
-  file:
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
-    state: "{{ item.state | default('file') }}"
-  loop:
-    - { dest: "/etc/bash_completion.d/kubectl" }
-    - { dest: "/usr/local/bin/kubectl", mode: "0755" }
