@@ -4,9 +4,9 @@
 
 ### Major Changes
 
-  - Install package with upstream repository
+  - Install dependencies with package manager
+  - Upgrade minimal Ansible community package support to 4.5.0
   - Rename prefix with `kube_`
-  - Upgrade minimal Ansible community package support to 4.4.0
 
 ## 5.1.0 - 2021-07-18
 
