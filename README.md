@@ -1,5 +1,7 @@
 # Ansible Role for kubectl
 
+<img src="/alvistack.svg" width="75" alt="AlviStack">
+
 [![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/alvistack/ansible-role-kube_kubectl/master)](https://gitlab.com/alvistack/ansible-role-kube_kubectl/-/pipelines)
 [![GitHub release](https://img.shields.io/github/release/alvistack/ansible-role-kube_kubectl.svg)](https://github.com/alvistack/ansible-role-kube_kubectl/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/ansible-role-kube_kubectl.svg)](https://github.com/alvistack/ansible-role-kube_kubectl/blob/master/LICENSE)
