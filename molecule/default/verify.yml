@@ -19,6 +19,6 @@
   become: true
   tasks:
     - name: kubectl version
-      command: kubectl version --client
+      ansible.builtin.command: kubectl version --client
       register: result
       changed_when: result is not succeeded
