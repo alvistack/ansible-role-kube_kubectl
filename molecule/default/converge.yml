@@ -20,5 +20,5 @@
   tasks:
     - name: include role
       ansible.builtin.include_role:
-        name: kube_kubectl
-      tags: kube_kubectl
+        name: alvistack.kube_kubectl
+      tags: alvistack.kube_kubectl
