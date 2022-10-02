@@ -20,6 +20,7 @@
   become: true
   tasks:
     - name: kubectl version
-      ansible.builtin.command: kubectl version --client
+      ansible.builtin.command:
+        cmd: kubectl version --client
       register: result
       changed_when: result is not succeeded
