@@ -19,8 +19,8 @@
   remote_user: root
   become: true
   tasks:
-    - name: kubectl version
+    - name: kubectl version --output=yaml --client
       ansible.builtin.command:
-        cmd: kubectl version --client
+        cmd: kubectl version --output=yaml --client
       register: result
       changed_when: result is not succeeded
