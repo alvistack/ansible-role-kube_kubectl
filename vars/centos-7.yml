@@ -35,3 +35,4 @@ _yum_repository:
 
 _yum:
   - { state: present, name: "kubernetes-kubectl-100:{{ kube_kubectl_version }}*" }
+  - { state: latest, name: "kustomize" }

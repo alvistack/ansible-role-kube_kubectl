@@ -33,3 +33,4 @@ _deb822_repository:
 
 _apt:
   - { state: present, name: "kubernetes-kubectl=100:{{ kube_kubectl_version }}*" }
+  - { state: latest, name: "kustomize" }
