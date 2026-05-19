@@ -18,4 +18,4 @@
 kube_release: "{{ _kube_release }}"
 
 # kubectl version.
-kube_kubectl_version: "{{ _kube_kubectl_version[kube_release] }}"
+kube_kubectl_version: "{{ _kube_kubectl_version }}"
